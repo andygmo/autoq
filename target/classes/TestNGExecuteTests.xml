@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="ResponsiveTests" verbose="0">
+
+
+    <parameter name="browser" value="Firefox"/>
+    <parameter name="webDriverVersion" value="0.24.0"/>
+
+
+    <listeners>
+        <listener class-name="com.presta.common.TestListener"/>
+    </listeners>
+
+    <test name="iPadTest" verbose="4">
+        <parameter name="device" value="iPad"/>
+        <classes>
+            <class name="com.sqs.prestatests.PrestaResponsiveTests"/>
+        </classes>
+    </test>
+
+    <test name="GalaxyS9Test" verbose="1">
+        <parameter name="device" value="GalaxyS9"/>
+        <classes>
+            <class name="com.sqs.prestatests.PrestaResponsiveTests"/>
+        </classes>
+    </test>
+
+</suite>
+
+
