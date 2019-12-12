@@ -27,6 +27,7 @@ public class PrestaResponsiveTests extends PrestaBaseTest {
         Screenshot ss = new Screenshot();
         ss.takeScreenShot(Config.getGlobalProperty("snapDir"),"SignInactual_" + device, true, true);
         Assert.assertTrue(ss.verifyScreenShot(Config.getGlobalProperty("baseLineDir") + "SignInbase_" + device + ".png", Config.getGlobalProperty("snapDir") +"SignInactual_" + device + ".png"));
+    	//This is a comment
     }
 
 
