@@ -2,4 +2,4 @@ pipeline:
   build:
     image: maven:3.5-alpine
     commands:
-      - mvn clean
+      - mvn clean install
