@@ -3,3 +3,7 @@ pipeline:
     image: maven:3.5-alpine
     commands:
       - mvn clean test site 
+
+services:
+  selenium:
+    image: selenium/standalone-chrome
