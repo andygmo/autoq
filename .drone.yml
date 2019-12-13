@@ -1,15 +1,9 @@
 pipeline:
   build:
-    image: maven:3.5-alpine
+    image: openjdk 
     commands:
       - mvn clean test site 
 
 services:
   selenium:
-    image: selenium/hub
-
-  chrome:
-    image: selenium/node-chrome
-    environment:
-      HUB_PORT_4444_TCP_ADDR: selenium
-      HUB_PORT_4444_TCP_PORT: "4444"
+    image: selenium/standalone-chrome
