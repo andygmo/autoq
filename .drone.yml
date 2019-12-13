@@ -6,7 +6,7 @@ pipeline:
 
 services:
   selenium:
-    image: selenium/standalone-chrome
+    image: selenium/hub
 
   chrome:
     image: selenium/node-chrome
