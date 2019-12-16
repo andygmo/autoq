@@ -4,7 +4,7 @@
 <suite name="SQSTestSuite" verbose="1">
 
     <parameter name="browser" value="Chrome"/>
-    <parameter name="webDriverVersion" value="78.0.3904.70"/>
+    <!--parameter name="webDriverVersion" value="78.0.3904.70"/-->
 
     <listeners>
         <listener class-name="com.presta.common.TestListener"/>
