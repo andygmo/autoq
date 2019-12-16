@@ -417,8 +417,8 @@
                 <Timeout>30</Timeout>
 
                 <!-- Grid settings -->
-		<!--<SeleniumGrid>true</SeleniumGrid>
-		<RemoteServerURL>http://selenium:4444/wd/hub</RemoteServerURL>-->
+		<SeleniumGrid>true</SeleniumGrid>
+		<RemoteServerURL>http://selenium:4444/wd/hub</RemoteServerURL>
 
                 <!-- force download -->
                 <ForceFileDownload>true</ForceFileDownload>
