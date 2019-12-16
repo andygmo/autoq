@@ -93,7 +93,7 @@ public class TestListener implements ITestListener {
 
     DriverProvider.setBrowserDriverVersion(webDriverVersion);
     DriverProvider.setBrowserStackToLocal(browserstackToLocal);
-    DriverProvider.setGrid(true);
+    DriverProvider.setGrid("http://selenium:4444/wd/hub");
     DriverProvider.setPlatform(platform);
     DriverProvider.initialize();
 
