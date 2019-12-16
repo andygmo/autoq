@@ -77,7 +77,7 @@ public class TestListener implements ITestListener {
     String browserName = result.getMethod().getXmlTest().getAllParameters().get("browser");
     // if browser is null due to not running from xml the default to chrome
     if (browserName == null) {
-      browserName = "Firefox";
+      browserName = "Chrome";
     }
 
     //Set webdriver version you need in XML or manually in code
@@ -93,7 +93,7 @@ public class TestListener implements ITestListener {
 
     DriverProvider.setBrowserDriverVersion(webDriverVersion);
     DriverProvider.setBrowserStackToLocal(browserstackToLocal);
-    DriverProvider.setGrid(grid);
+    DriverProvider.setGrid(true);
     DriverProvider.setPlatform(platform);
     DriverProvider.initialize();
 
