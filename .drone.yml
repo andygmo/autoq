@@ -6,4 +6,10 @@ pipeline:
 
 services:
   selenium:
-    image: selenium/standalone-chrome
+    image: selenium/hub
+
+  chrome:
+    image: selenium/node-chrome
+    environment:
+      HUB_PORT_4444_TCP_ADDR: selenium
+      HUB_PORT_444_TCP_PORT: "4444"
