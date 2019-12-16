@@ -1,16 +1,6 @@
 pipeline:
   build:
     image:  markhobson/maven-chrome
+    shm_size: 1024000000
     commands:
       - mvn clean test site 
-
-services:
-  selenium:
-    image: selenium/hub
-
-  chrome:
-    image: selenium/node-chrome
-    environment:
-      HUB_PORT_4444_TCP_ADDR: selenium
-      HUB_PORT_4444_TCP_PORT: "4444"
-      DISPLAY: ":99.0"
