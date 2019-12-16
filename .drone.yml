@@ -3,6 +3,6 @@ pipeline:
     image:  markhobson/maven-chrome
     shm_size: 1024000000
     environment:
-      CHROMEDRIVER_WHITELISTED_IPS=\'\'
+      CHROMEDRIVER_WHITELISTED_IPS=
     commands:
       - mvn clean test site 
