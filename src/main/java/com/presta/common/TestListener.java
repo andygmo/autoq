@@ -96,6 +96,7 @@ public class TestListener implements ITestListener {
     DriverProvider.setGrid(grid);
     //DriverProvider.setGrid("http://selenium:4444/wd/hub");
     DriverProvider.setPlatform(platform);
+    DriverProvider.setHeadless(true);
     DriverProvider.initialize();
 
 
