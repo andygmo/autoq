@@ -438,9 +438,8 @@
 
                 <url>http://ec2-18-203-109-135.eu-west-1.compute.amazonaws.com/prestashop/</url>
                 <!-- Grid settings -->
-                <!--<SeleniumGrid>true</SeleniumGrid>-->
-                <!--<RemoteServerURL>http://msdn-dev-build3.pd.group.intl:4444/wd/hub</RemoteServerURL>-->
-
+                <SeleniumGrid>true</SeleniumGrid>
+                <RemoteServerURL>http://selenium:4444/wd/hub</RemoteServerURL>
                 <!-- force download -->
                 <ForceFileDownload>true</ForceFileDownload>
 
