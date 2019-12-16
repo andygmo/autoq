@@ -4,5 +4,6 @@ pipeline:
     shm_size: 1024000000
     environment:
       CHROMEDRIVER_WHITELISTED_IPS: ""
+      DISPLAY: ":99.0"
     commands:
       - mvn clean test site 
