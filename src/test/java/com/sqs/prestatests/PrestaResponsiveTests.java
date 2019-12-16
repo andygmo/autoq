@@ -8,7 +8,12 @@ import com.presta.pageobjects.PrestaHome;
 import com.sqs.core.common.Config;
 import com.sqs.prestatests.base.PrestaBaseTest;
 import org.apache.xpath.operations.Bool;
-import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.Assert;
 import org.testng.annotations.*;
 
 public class PrestaResponsiveTests extends PrestaBaseTest {
@@ -42,10 +47,15 @@ public class PrestaResponsiveTests extends PrestaBaseTest {
 
     @Test(description = "Record the Accesibility score for the page")
     public void ATest(){
-        waitFor(PrestaHome.class);
-	if (true){
-		System.out.println("This is a true");
-		assert(true);
-	}
+
+        ChromeOptions o = new ChromeOptions();
+        o.addArguments("--headless");
+        ChromeDriver driver = new ChromeDriver(o);
+
+        driver.get("http://www.bbc.co.uk");
+        WebElement title = driver.findElement(By.xpath("//*[@class='hp-banner__text']"));
+        String ActualTitle = title.getText();
+
+        Assert.assertEquals(ActualTitle, "Welcome to the BBC");
     }
 }
