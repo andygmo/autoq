@@ -3,7 +3,6 @@ package com.sqs.prestatests.base;
 import com.presta.pageobjects.basepages.PageObjectBase;
 import com.sqs.core.common.logging.Logger;
 import com.sqs.core.common.logging.LoggerProvider;
-import com.sqs.web.webdriver.DriverProvider;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 
@@ -17,11 +16,10 @@ public abstract class PrestaBaseTest {
 
   @Parameters("browser")
   @BeforeTest
-  protected void setupTest(@Optional("Chrome") String browser, ITestContext context) {
-        //DriverProvider.setBrowser(browser);
-        //DriverProvider.setBrowserDriverVersion("75.0.3770.8");
-        //DriverProvider.initialize();
-        //logger.startTestCase(context.getName());
+  protected void setupTest(@Optional("firefox") String browser, ITestContext context) {
+    //    DriverProvider.setBrowser(browser);
+    //    DriverProvider.initialise();
+    //    logger.startTestCase(context.getName());
   }
 
   /**

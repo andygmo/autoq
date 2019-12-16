@@ -8,7 +8,7 @@
 
     <groupId>com.sqs</groupId>
     <artifactId>sqsfw_test</artifactId>
-    <version>1.2.8-SNAPSHOT</version>
+    <version>1.3.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>sqs_fw_test</name>
@@ -21,7 +21,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <aspectj.version>1.8.11</aspectj.version>
         <resourcesFolder>resources</resourcesFolder>
-        <sqsVersion>1.2.8</sqsVersion>
+        <sqsVersion>1.3.1-SNAPSHOT</sqsVersion>
         <timestamp>${maven.build.timestamp}</timestamp>
         <maven.build.timestamp.format>yyyyMMdd'T'HHmmss</maven.build.timestamp.format>
         <allure2.version>2.7.0</allure2.version>
@@ -37,7 +37,7 @@
         <repository>
             <id>sqsAutomation-nexus</id>
             <name>sqsAutomation</name>
-            <url>http://automation.sqs.com:8081/repository/sqsautomation/</url>
+            <url>https://repository.expleogroup.com/repository/sqsautomation/</url>
         </repository>
     </repositories>
     <pluginRepositories>
@@ -58,7 +58,16 @@
             <artifactId>sqsfw_web</artifactId>
             <version>${sqsVersion}</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.sqs</groupId>
+            <artifactId>sqsfw_mobile</artifactId>
+            <version>${sqsVersion}</version>
+        </dependency>
+        <dependency>
+            <groupId>ru.yandex.qatools.ashot</groupId>
+            <artifactId>ashot</artifactId>
+            <version>1.5.2</version>
+        </dependency>
         <!-- Guice needs to be here to fix errors -->
         <dependency>
             <groupId>com.google.inject</groupId>
@@ -70,6 +79,13 @@
                     <groupId>com.google.guava</groupId>
                 </exclusion>
             </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>de.retest</groupId>
+            <artifactId>recheck-web</artifactId>
+            <version>1.6.0</version>
+            <scope>test</scope>
         </dependency>
 
         <!-- Adding guava to solve some issues with browser not starting -->
@@ -108,13 +124,6 @@
             <version>1.2.5</version>
         </dependency>
 
-        <!-- Testing for responsive web design, img recognition -->
-        <dependency>
-            <groupId>ru.yandex.qatools.ashot</groupId>
-            <artifactId>ashot</artifactId>
-            <version>1.5.2</version>
-        </dependency>
-
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -136,6 +145,12 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>1.2.3</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -416,9 +431,15 @@
                 <!--Timeout-->
                 <Timeout>30</Timeout>
 
+                <setBaseline>true</setBaseline>
+                <baseLineDir>${OSFresourcesFolder}/baseline/</baseLineDir>
+                <snapDir>${OSFresourcesFolder}/snapshot/</snapDir>
+                <diffDir>${OSFresourcesFolder}/diffs/</diffDir>
+
+                <url>http://ec2-18-203-109-135.eu-west-1.compute.amazonaws.com/prestashop/</url>
                 <!-- Grid settings -->
-		<SeleniumGrid>true</SeleniumGrid>
-		<RemoteServerURL>http://selenium:4444/wd/hub</RemoteServerURL>
+                <!--<SeleniumGrid>true</SeleniumGrid>-->
+                <!--<RemoteServerURL>http://msdn-dev-build3.pd.group.intl:4444/wd/hub</RemoteServerURL>-->
 
                 <!-- force download -->
                 <ForceFileDownload>true</ForceFileDownload>
@@ -436,7 +457,7 @@
                 <Trace>true</Trace>
 
                 <!-- Set headless mode for JBrowserDriver, defaults to true-->
-                <Headless>false</Headless>
+                <Headless>true</Headless>
 
                 <suiteXmlFile>${resourcesFolder}\TestNGExecuteTests.xml</suiteXmlFile>
                 <argLine>
@@ -458,7 +479,7 @@
             </activation>
             <properties>
                 <!--Base path for resources and reports-->
-                <OSFresourcesFolder>/home/user/autoq/SQS_OSF</OSFresourcesFolder>
+                <OSFresourcesFolder>/var/tmp/</OSFresourcesFolder>
 
                 <!--Reports folders-->
                 <testReportDirectory>${OSFresourcesFolder}/${timestamp}/Reports</testReportDirectory>
@@ -468,14 +489,18 @@
                 <Timeout>30</Timeout>
 
                 <!-- Grid settings -->
-                <SeleniumGrid>false</SeleniumGrid>
+                <SeleniumGrid>true</SeleniumGrid>
                 <RemoteServerURL>http://msdn-dev-build3.pd.group.intl:4444/wd/hub</RemoteServerURL>
 
                 <!-- force download -->
                 <ForceFileDownload>true</ForceFileDownload>
 
                 <DriverPath>${OSFresourcesFolder}/Drivers</DriverPath>
-
+                <setBaseline>true</setBaseline>
+                <baseLineDir>${OSFresourcesFolder}/baseline/</baseLineDir>
+                <snapDir>${OSFresourcesFolder}/snapshot/</snapDir>
+                <diffDir>${OSFresourcesFolder}/diffs/</diffDir>
+                <url>http://ec2-18-203-109-135.eu-west-1.compute.amazonaws.com/prestashop/</url>
                 <!--Screenshot properties -->
                 <FailedScreenshotLocation>${OSFresourcesFolder}/Screenshots/FailedTests</FailedScreenshotLocation>
                 <ScreenshotLocation>${OSFresourcesFolder}/Screenshots/AllScreens</ScreenshotLocation>

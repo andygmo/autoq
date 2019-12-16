@@ -6,18 +6,15 @@ import com.sqs.web.elements.Button;
 import com.sqs.web.elements.Hyperlink;
 import com.sqs.web.elements.Label;
 import com.sqs.web.elements.TextInput;
+import com.sqs.web.utils.ResponsiveUtils;
 import io.qameta.allure.Step;
-import org.apache.xpath.operations.Bool;
 import org.openqa.selenium.By;
-import com.presta.utility.Screenshot;
-import org.testng.annotations.Parameters;
-
-import java.awt.image.BufferedImage;
 
 /**
  * The Presta sign in page.
  */
 public class PrestaSignIn extends PrestaBasePage<PrestaSignIn> {
+
 
   /**
    * The Error message.
@@ -35,14 +32,14 @@ public class PrestaSignIn extends PrestaBasePage<PrestaSignIn> {
   private final Hyperlink createAccountLink = new Hyperlink(By.xpath("//a[normalize-space()='No account? Create one here']"));
   private final Button signInButton = new Button(By.xpath("//*[@id='login-form']/footer/button"));
 
+
   public PrestaSignIn(){
     if (Boolean.parseBoolean(Config.getGlobalProperty("setBaseline")) == true) {
-      Screenshot ss = new Screenshot();
+      ResponsiveUtils ru = new ResponsiveUtils();
       String device = Config.getGlobalProperty("device");
-      ss.takeScreenShot(Config.getGlobalProperty("baseLineDir"), "SignInbase_" + device, true, true);
+      ru.takeScreenShot(Config.getGlobalProperty("baseLineDir"), "SignInbase_" + device, true, true);
     }
   }
-
   /**
    * Input sign in details.
    *

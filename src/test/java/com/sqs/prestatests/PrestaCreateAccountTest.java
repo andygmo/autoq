@@ -1,32 +1,24 @@
 package com.sqs.prestatests;
 
-import com.presta.pageobjects.basepages.PrestaBasePage;
-import com.presta.utility.Screenshot;
-import com.presta.common.TestListener;
 import com.presta.enums.ErrorMessages;
 import com.presta.pageobjects.PrestaCreateNewAccountPage;
 import com.presta.pageobjects.PrestaHome;
-import com.sqs.core.common.Config;
 import com.sqs.prestatests.base.PrestaBaseTest;
 import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import io.qameta.allure.TmsLink;
-import org.junit.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
 import static org.hamcrest.CoreMatchers.is;
 
 public class PrestaCreateAccountTest extends PrestaBaseTest {
 
+
   /**
    * Create Account Page Validation Attribute Message Tests
    */
+
   @Feature("Negative testing on the Create Customer Account form.")
 
   /**
@@ -37,12 +29,11 @@ public class PrestaCreateAccountTest extends PrestaBaseTest {
   @Description("Leave the FirstName field black in the create customer account form. Using getAttribute required field should be true")
   public void createAccountNegativeFirstNameTest() {
     waitFor(PrestaHome.class)
-       .PrestaHeader.navigateToPrestaSignIn()
-       .navigateToCreateNewAccount()
-       .createAccountInvalid("", "ike", "abc@sqs.com", "abc123", "05/31/1970")
-       .assertThatElement("FirstName field checking getAttribute 'required' field should return true", new PrestaCreateNewAccountPage().firstName.getAttribute("required"), is("true"));
+        .PrestaHeader.navigateToPrestaSignIn()
+        .navigateToCreateNewAccount()
+        .createAccountInvalid("", "mike", "abc@sqs.com", "abc123", "05/31/1970")
+        .assertThatElement("FirstName field checking getAttribute 'required' field should return true", new PrestaCreateNewAccountPage().firstName.getAttribute("required"), is("true"));
   }
-
 
   /**
    * Leave the LastName field black in the create customer account form. Using getAttribute required field should be true

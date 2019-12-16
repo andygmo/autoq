@@ -7,9 +7,7 @@ import com.sqs.core.common.reporting.Reporter;
 import com.sqs.core.common.reporting.ReporterProvider;
 import com.sqs.web.utils.Screenshot;
 import com.sqs.web.webdriver.DriverProvider;
-import cucumber.api.java.gl.E;
 import io.qameta.allure.Attachment;
-import org.apache.xalan.xsltc.dom.SimpleResultTreeImpl;
 import org.openqa.selenium.Platform;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
@@ -23,7 +21,6 @@ public class TestListener implements ITestListener {
 
   @Override
   public synchronized void onStart(ITestContext context) {
-
   }
 
   @Override
@@ -52,6 +49,15 @@ public class TestListener implements ITestListener {
         baseDir.mkdirs();
       }
     }
+    File diffDir = new File(Config.getGlobalProperty("diffDir"));
+    if (diffDir.exists() && !diffDir.isDirectory()){
+      diffDir.delete();
+      diffDir.mkdirs();
+    }
+    //Create folder if it doesn't exist
+    if (!diffDir.exists()){
+      diffDir.mkdirs();
+    }
 
     File snapDir = new File(Config.getGlobalProperty("snapDir"));
     if (snapDir.exists() && !snapDir.isDirectory()){
@@ -63,33 +69,35 @@ public class TestListener implements ITestListener {
       snapDir.mkdirs();
     }
 
+    String device = result.getMethod().getXmlTest().getAllParameters().get("device");
+    Config.setGlobalProperty("device", device);
+
     //XML values are from TestNGExecuteTests.xml
     //Used when running maven test goal
     String browserName = result.getMethod().getXmlTest().getAllParameters().get("browser");
     // if browser is null due to not running from xml the default to chrome
     if (browserName == null) {
-      browserName = "Chrome";
+      browserName = "Firefox";
     }
 
     //Set webdriver version you need in XML or manually in code
     String webDriverVersion = result.getMethod().getXmlTest().getAllParameters().get("webDriverVersion");
-    //webDriverVersion = "0.24.0";
+
     String grid = result.getMethod().getXmlTest().getAllParameters().get("grid");
     String platform = result.getMethod().getXmlTest().getAllParameters().get("platform");
     String browserstackToLocal = result.getMethod().getXmlTest().getAllParameters().get("browserstackToLocal");
 
-    String device = result.getMethod().getXmlTest().getAllParameters().get("device");
-    Config.setGlobalProperty("device", device);
-
     DriverProvider.setBrowser(browserName);
     //set specific version of the web driver to download. Search online for compatible version for your browser
     //recommended for Chromedriver
+
     DriverProvider.setBrowserDriverVersion(webDriverVersion);
-    System.out.println("SET THE VERSION!!" + webDriverVersion);
     DriverProvider.setBrowserStackToLocal(browserstackToLocal);
     DriverProvider.setGrid(grid);
     DriverProvider.setPlatform(platform);
     DriverProvider.initialize();
+
+
   }
 
   @Override

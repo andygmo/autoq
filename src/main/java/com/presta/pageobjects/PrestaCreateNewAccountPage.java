@@ -1,10 +1,10 @@
 package com.presta.pageobjects;
 
 import com.presta.pageobjects.basepages.PrestaBasePage;
-import com.presta.utility.Screenshot;
 import com.sqs.core.common.Config;
 import com.sqs.web.elements.Button;
 import com.sqs.web.elements.TextInput;
+import com.sqs.web.utils.ResponsiveUtils;
 import io.qameta.allure.Step;
 import jdk.nashorn.internal.objects.annotations.Property;
 import org.openqa.selenium.By;
@@ -21,10 +21,11 @@ public class PrestaCreateNewAccountPage extends PrestaBasePage<PrestaCreateNewAc
   public PrestaCreateNewAccountPage(){
     String device = Config.getGlobalProperty("device");
     if (Boolean.parseBoolean(Config.getGlobalProperty("setBaseline"))){
-      Screenshot ss = new Screenshot();
-      ss.takeScreenShot(Config.getGlobalProperty("baseLineDir"), "CreateNewAccountPage_base_" + device, true, true);
+      ResponsiveUtils ru = new ResponsiveUtils();
+      ru.takeScreenShot(Config.getGlobalProperty("baseLineDir"), "CreateNewAccountPage_base_" + device, true, true);
     }
   }
+
 
   /**
    * Create New Account with invalid details

@@ -1,15 +1,14 @@
 package com.presta.pageobjects;
 
 import com.presta.pageobjects.basepages.PrestaBasePage;
-import com.presta.utility.Screenshot;
 import com.sqs.core.common.Config;
 import com.sqs.web.elements.Button;
 import com.sqs.web.elements.Select;
 import com.sqs.web.elements.TextArea;
 import com.sqs.web.elements.TextInput;
+import com.sqs.web.utils.ResponsiveUtils;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
-import org.testng.annotations.Parameters;
 
 /**
  * The Presta contact us page.
@@ -21,15 +20,13 @@ public class PrestaContactUs extends PrestaBasePage<PrestaContactUs> {
   private final TextArea message = new TextArea(By.xpath("//*[@name='message']"));
   private final Button send = new Button(By.xpath("//*[@name='submitMessage']"));
 
-
   public PrestaContactUs(){
     String device = Config.getGlobalProperty("device");
     if (Boolean.parseBoolean(Config.getGlobalProperty("setBaseline"))){
-      Screenshot ss = new Screenshot();
-      ss.takeScreenShot(Config.getGlobalProperty("baseLineDir"), "ContactUsbase_" + device, true, true);
+      ResponsiveUtils ru = new ResponsiveUtils();
+      ru.takeScreenShot(Config.getGlobalProperty("baseLineDir"), "ContactUsbase_" + device, true, true);
     }
   }
-
   /**
    * Fill in contact us form.
    *

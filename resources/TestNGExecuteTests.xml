@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="ResponsiveTests" verbose="0">
-
+<suite name="SQSTestSuite" verbose="1">
 
     <parameter name="browser" value="Chrome"/>
-
+    <parameter name="webDriverVersion" value="78.0.3904.70"/>
 
     <listeners>
         <listener class-name="com.presta.common.TestListener"/>
     </listeners>
+    <!--test name="PrestaTest" verbose="4">
+        <parameter name="device" value="desktop"/>
+        <classes>
+            <class name="com.sqs.prestatests.PrestaSignInTest"/>
+            <class name="com.sqs.prestatests.PrestaCreateAccountTest"/>
+        </classes>
+    </test-->
 
     <test name="iPadTest" verbose="4">
         <parameter name="device" value="iPad"/>
@@ -18,13 +24,4 @@
         </classes>
     </test>
 
-    <test name="GalaxyS9Test" verbose="1">
-        <parameter name="device" value="GalaxyS9"/>
-        <classes>
-            <class name="com.sqs.prestatests.PrestaResponsiveTests"/>
-        </classes>
-    </test>
-
 </suite>
-
-
