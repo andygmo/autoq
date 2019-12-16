@@ -4,7 +4,7 @@ pipeline:
     commands:
       - mvn clean test site 
 
-    services:
+services:
   selenium:
     image: selenium/hub
 
