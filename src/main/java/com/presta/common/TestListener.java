@@ -17,7 +17,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-import sun.jvm.hotspot.ui.classbrowser.ClassBrowserPanel;
+//import sun.jvm.hotspot.ui.classbrowser.ClassBrowserPanel;
 
 import java.io.File;
 
