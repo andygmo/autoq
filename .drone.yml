@@ -1,5 +1,5 @@
 pipeline:
-  build:
+  Step1:
     image:  markhobson/maven-chrome
     shm_size: 1024000000
     environment:
@@ -8,15 +8,13 @@ pipeline:
     commands:
       - mvn clean test 
 
-pipeline:
-  build:
+  Step2:
     image: markhobson/maven-chrome
     shm_size: 1024000000
     commands:
       - mvn clean
 
-pipeline:
-  build:
+  Step3:
     image: markhobson/maven-chrome
     shm_size: 1024000000
     commands:
