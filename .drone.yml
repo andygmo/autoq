@@ -6,4 +6,18 @@ pipeline:
       CHROMEDRIVER_WHITELISTED_IPS: ""
       DISPLAY: ":99.0"
     commands:
-      - mvn clean test site 
+      - mvn clean test 
+
+pipeline:
+  build:
+    image: markhobson/maven-chrome
+    shm_size: 1024000000
+    commands:
+      - mvn clean
+
+pipeline:
+  build:
+    image: markhobson/maven-chrome
+    shm_size: 1024000000
+    commands:
+      - mvn clean test site
