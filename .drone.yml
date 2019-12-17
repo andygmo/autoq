@@ -1,6 +1,7 @@
 pipeline:
   Step1:
     image:  markhobson/maven-chrome
+    group: g1
     shm_size: 1024000000
     environment:
       CHROMEDRIVER_WHITELISTED_IPS: ""
@@ -10,12 +11,14 @@ pipeline:
 
   Step2:
     image: markhobson/maven-chrome
+    group: g1
     shm_size: 1024000000
     commands:
       - mvn clean
 
   Step3:
     image: markhobson/maven-chrome
+    group: g1
     shm_size: 1024000000
     commands:
       - mvn clean test site
