@@ -8,17 +8,3 @@ pipeline:
       DISPLAY: ":99.0"
     commands:
       - mvn clean test 
-
-  Step2:
-    image: markhobson/maven-chrome
-    group: g1
-    shm_size: 1024000000
-    commands:
-      - mvn clean
-
-  Step3:
-    image: markhobson/maven-chrome
-    group: g1
-    shm_size: 1024000000
-    commands:
-      - mvn clean test site
